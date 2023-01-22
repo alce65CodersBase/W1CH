@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Pasapalabra</title>
+        <link rel="stylesheet" href="styles.css" />
+        <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+        <script src="./index.js" type="module"></script>
+    </head>
+    <body>
+        <header>
+            <h1>Pre-Curso</h1>
+            <a href="../../index.html">
+                <button>Volver</button>
+            </a>
+        </header>
+        <main class="container">
+            <section class="game">
+                <header>
+                    <h1>PASAPALABRA</h1>
+                </header>
+
+                <div class="controls-container">
+                    <div class="main-buttons" hidden>
+                        <button class="info">Info</button>
+                    </div>
+                    <slot class="info-slot"></slot>
+                    <form class="initial-form">
+                        <input
+                            type="text"
+                            placeholder="Dinos tu nombre"
+                            required
+                        />
+                        <button type="submit">Jugar</button>
+                    </form>
+                    <slot class="circle-slot"></slot>
+                    <slot class="controls-slot"></slot>
+                </div>
+                <footer>
+                    <p>Made by ISDI Coders</p>
+                </footer>
+            </section>
+        </main>
+
+        <dialog class="info-dlg">
+            <slot></slot>
+            <div>
+                <button type="button">Close</button>
+            </div>
+        </dialog>
+
+        <template class="template-info">
+            <div>
+                <h4>Bienvenidos al juego de Pasapalabra de ISDI Coders!</h4>
+                <p>
+                    Basado en el exitoso concurso de televisión Pasapalabra de
+                    Telecinco.
+                </p>
+                <p>Las normas son muy sencillas:</p>
+                <ul>
+                    <li>Se mostraran unas definiciones por pantalla</li>
+                    <li>
+                        el usuario deberá responder con la palabra a la que
+                        corresponden
+                    </li>
+                    <li>
+                        El usuario tiene la opción de decir Pasapalabra y dejar
+                        esa definición para mas adelante.
+                    </li>
+                    <li>
+                        El programa no es sensible a las acentuación, asi que se
+                        puede introducir la palabra con o sin tilde.
+                    </li>
+                    <li>
+                        Es posible utilizar la tecla ENTER para enviar la
+                        palabra y el SPACE para hacer pasapalabra.
+                    </li>
+                </ul>
+            </div>
+        </template>
+
+        <template class="template-circle">
+            <ul class="circle"></ul>
+            <ul class="scoreboard">
+                <li id="timer" class="timer">150</li>
+                <li id="score" class="score">0</li>
+            </ul>
+        </template>
+
+        <template class="template-controls">
+            <div class="question-controls">
+                <output class="output-hint"></output>
+                <output class="output-definition"></output>
+                <form class="control-form">
+                    <div>
+                        <input
+                            type="text"
+                            placeholder="Introduce tu respuesta | 'space' para pasar"
+                        />
+                    </div>
+                    <div class="control-buttons">
+                        <button class="btn-send" type="submit">Enviar</button>
+                        <button class="btn-pasapalabra" type="button">
+                            Pasapalabra
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div id="js--pa-controls" class="pa-controls hidden">
+                <p id="js--end-title" class="title"></p>
+                <p id="js--end-subtitle" class="subtitle"></p>
+                <a id="js--pa" class="btn" href=""
+                    ><i class="icon-loop"></i>Jugar de nuevo</a
+                >
+            </div>
+        </template>
+    </body>
+</html>

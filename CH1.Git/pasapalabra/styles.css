@@ -1,0 +1,128 @@
+:root {
+    --primary_color: rgb(128, 0, 0);
+    --secondary_color: rgb(255, 228, 196);
+    --white_color: rgb(250, 250, 250);
+    --gray_color: rgb(240, 240, 240);
+    --black_color: rgb(10, 10, 10);
+    --hit_color: green;
+    --miss_color: red;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    margin: 0;
+    color: var(--black_color);
+    background-color: var(--white_color);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body > header {
+    flex: 1 0 auto;
+    max-height: 4rem;
+    background-color: var(--secondary_color);
+    color: var(--primary_color);
+    padding: 1rem 1rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+}
+
+header h1 {
+    font-size: 1.4rem;
+    margin-block: 0;
+}
+
+.container {
+    flex: 20 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section {
+    width: clamp(500px, 550px, 70%);
+    height: min(60vh);
+    border: 2px solid var(--gray_color);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+section header,
+section footer {
+    flex: 1 0 auto;
+    text-align: center;
+}
+
+section footer {
+    margin-block-start: 1rem;
+}
+
+section footer p {
+    margin-block-end: 0;
+}
+
+section .controls-container {
+    flex: 20 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+input {
+    border: none;
+    border-bottom: 2px solid var(--gray_color);
+}
+
+ul.circle {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 1rem;
+}
+
+ul.scoreboard {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.question-controls input {
+    width: 100%;
+}
+
+.question-controls output {
+    display: block;
+    margin-block: 0.5rem;
+}
+
+.control-buttons {
+    margin-block-start: 1rem;
+}
+
+.select-letter {
+    background-color: var(--secondary_color);
+    color: var(--primary_color);
+}
+
+.hit-letter {
+    background-color: var(--hit_color);
+}
+
+.miss-letter {
+    background-color: var(--miss_color);
+}

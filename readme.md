@@ -48,6 +48,27 @@ Script en package.json
 
 ### Day 5
 
-Configuración del proyecto
+Configuración del proyecto: Husky
 
-- Husky
+Install husky
+
+```shell
+npm i -D husky
+
+```
+
+Enable Git hooks configuring package.json
+
+```shell
+npx husky install
+npm pkg set scripts.prepare="husky install"
+```
+
+Add initial huskies as executable files
+
+```shell
+npx husky add .husky/pre-push "sample"
+npx husky add .husky/commit-msg "sample"
+```
+
+Copy real content for commit-msg y pre-push:

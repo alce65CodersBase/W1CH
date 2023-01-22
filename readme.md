@@ -4,7 +4,7 @@ BootCamp de Madrid
 
 - Day 1. Git/GitHub
 
-## Configuración
+## Configuración / Instalación
 
 ### Day 1
 
@@ -19,7 +19,7 @@ Configuración del proyecto
 - .gitignore
 - package.json inicial (prettier 'single quotes')
 
-## Instalación (Day 1)
+#### Procedimiento (Day 1)
 
 - Creamos proyecto incluido Prettier (CH1)
   - .editorconfig
@@ -31,3 +31,23 @@ Configuración del proyecto
 - Creamos el repo (CH1)
   - initial commit
   - conectamos a GitHub
+
+### Day 4
+
+Configuración del proyecto: SASS
+
+```shell
+npm i -D sass
+```
+
+Script en package.json
+
+```json
+  "sass": "sass sass:css -w --no-source-map"
+```
+
+### Day 5
+
+Configuración del proyecto
+
+- Husky

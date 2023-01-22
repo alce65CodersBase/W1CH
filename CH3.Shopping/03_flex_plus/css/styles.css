@@ -1,0 +1,310 @@
+/* Houdini Custom Properties
+   new @property CSS at-rule is part of the CSS Houdini umbrella of APIs.
+   It allows developers to explicitly define their css custom properties, allowing for property type checking, setting default values, and define whether a property can inherit values or not.
+*/
+
+@property --primary-font {
+    syntax: "*";
+    inherits: true;
+    initial-value: "Roboto Flex", arial, sans-serif;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --primary-color: hsl(224, 34%, 49%);
+    --secondary-color: hsl(27, 50%, 63%);
+    --light-secondary-color: hsl(28, 30%, 75%);
+    --dark-primary-color: hsl(271, 70%, 32%);
+    --dark-secondary-color: hsl(27, 100%, 42%);
+
+    --text-primary-color: hsl(213, 12%, 14%);
+    --text-highlight-color: hsl(0, 0%, 90%);
+
+    --background-color: var(--light-secondary-color);
+    --icon-color: var(--dark-primary-color);
+    --line-color: var(--dark-primary-color);
+    --line-focus-color: var(--dark-secondary-color);
+    --background-button: var(--primary-color);
+    --text-button: var(--text-highlight-color);
+    --text-list-hover: var(--dark-secondary-color);
+
+    --page-min-height: 100vh;
+    --not-main-min-height: 80px;
+    --main-min-height: calc(100vh - calc(2 * var(--not-main-min-height)));
+    --section-items-bought-height: 60px;
+    --section-total-min-height: 40px;
+
+    --x-small-space: 0.25rem;
+    --small-space: 0.5rem;
+    --normal-space: 1rem;
+    --middle-space: 1.25rem;
+    --large-space: 1.5rem;
+    --x-large-space: 2rem;
+    --xx-large-space: 3rem;
+
+    --normal-font: clamp(1rem, 0.75rem + 1vw, 2rem); /*1rem;*/
+    --s-middle-font: calc(var(--normal-font) + 0.1rem);
+    --middle-font: calc(var(--normal-font) + 0.2rem);
+    --large-font: calc(var(--normal-font) + 0.5rem);
+    --x-large-font: calc(var(--normal-font) + 0.8rem);
+
+    --title-font: var(--large-font);
+    --bought-font: var(--large-font);
+    --items-font: var(--s-middle-font);
+    --total-font: var(--large-font);
+    --form-font: var(--s-middle-font);
+
+    --large-icon-font: var(--x-large-font);
+    --middle-icon-font: var(--middle-font);
+
+    color-scheme: light dark;
+
+    --normal-row: row;
+    --normal-direction: ltr;
+}
+
+@media all {
+    /*
+        Use any display valid (e.g. flex) for start reverse mode
+        Use a invalid value (e.g. no-reverse) for maintain normal mode
+    */
+    @supports (display: no-reverse) {
+        :root {
+            --normal-row: row-reverse;
+            --normal-direction: rtl; /* reverse */
+        }
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: hsl(271, 70%, 32%);
+        --secondary-color: hsl(27, 100%, 42%);
+        --dark-primary-color: hsl(224, 34%, 49%);
+        --dark-secondary-color: hsl(27, 50%, 63%);
+        --light-secondary-color: hsl(28, 75%, 25%);
+
+        --text-highlight-color: hsl(213, 12%, 14%);
+        --text-primary-color: hsl(0, 0%, 90%);
+    }
+}
+
+html,
+body {
+    min-height: var(--page-min-height);
+}
+
+body {
+    font-family: var(--primary-font);
+    color: var(--text-primary-color);
+    background-color: var(--background-color);
+}
+
+section,
+header,
+footer {
+    padding-block: var(--normal-space);
+    padding-inline: var(--normal-space);
+}
+
+header,
+footer {
+    min-height: var(--not-main-min-height);
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    flex-direction: var(--normal-row);
+    justify-content: space-between;
+    gap: var(--xx-large-space);
+}
+header h1 {
+    font-weight: bold;
+    font-size: var(--title-font);
+}
+header ul {
+    display: flex;
+    align-items: center;
+    flex-direction: var(--normal-row);
+    justify-content: center;
+    gap: var(--normal-space);
+}
+header li {
+    list-style-type: none;
+}
+header li:hover {
+    font-weight: bold;
+}
+header li:nth-of-type(2) {
+    font-weight: bold;
+}
+
+footer {
+    justify-content: center;
+}
+
+main {
+    height: var(--main-min-height);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+main h2 {
+    font-size: var(--title-font);
+}
+
+/* 
+ * Index page & Form page 
+ */
+
+section.items-bought {
+    height: var(--section-items-bought-height);
+    margin-block-end: var(--middle-space);
+    background-color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    flex-direction: var(--normal-row);
+    justify-content: space-between;
+}
+
+section.items-bought p {
+    font-size: var(--bought-font);
+}
+
+.fa-plus-circle,
+.fa-minus-circle {
+    font-size: var(--large-icon-font);
+    color: var(--icon-color);
+}
+
+/* 
+ * Index page 
+ */
+
+section.items-list ul {
+    list-style-type: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+section.items-list ul > li {
+    width: 100%;
+    gap: var(--middle-space);
+    padding-block: 0;
+    font-size: var(--items-font);
+}
+
+section.items-list ul > li:hover {
+    color: var(--text-list-hover);
+}
+section.items-list article {
+    display: flex;
+    align-items: center;
+    flex-direction: var(--normal-row);
+    justify-content: space-between;
+    width: 100%;
+    height: var(--x-large-space);
+}
+
+section.items-list article dt {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    direction: var(--normal-direction);
+}
+section.items-list li:nth-of-type(odd) dt span {
+    text-decoration: line-through;
+}
+
+section.items-list article dd {
+    direction: var(--normal-direction);
+}
+
+section.items-list .fa-times {
+    margin-inline-start: var(--small-space);
+    font-size: var(--middle-icon-font);
+}
+
+section.items-list input {
+    margin-inline-end: var(--small-space);
+}
+
+section.total {
+    min-height: var(--section-total-min-height);
+    padding-block-start: var(--middle-space);
+    border-block-start: solid 1px var(--line-color);
+    font-size: var(--total-font);
+    display: flex;
+    align-items: center;
+    flex-direction: var(--normal-row);
+    justify-content: flex-end;
+}
+
+/* 
+ * Form page 
+ */
+
+section.article-title {
+    padding-block-start: var(--middle-space);
+    margin-block-start: var(--x-small-space);
+    padding-block-end: 0;
+    direction: var(--normal-direction);
+}
+section.form {
+    display: flex;
+    flex-direction: var(--normal-row);
+}
+form {
+    padding-block-start: var(--x-small-space);
+    width: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: var(--x-small-space);
+    direction: var(--normal-direction);
+}
+form input {
+    height: var(--middle-space);
+    width: max(100%, 400px);
+    padding-block: var(--small-space);
+    padding-inline: var(--small-space);
+    background-color: inherit;
+    border: none;
+    border-block-end: 1px solid var(--line-color);
+}
+
+form input:focus-visible {
+    border: none;
+    outline: none;
+    outline-color: var(--line-focus-color);
+    outline-style: solid;
+    outline-offset: 1px;
+}
+
+form label {
+    font-size: var(--form-font);
+    padding-block-start: var(--small-space);
+}
+
+form button {
+    font: inherit;
+    font-size: var(--form-font);
+    margin-block-start: var(--large-space);
+    padding-block: var(--small-space);
+    padding-inline: var(--small-space);
+    border: none;
+    background-color: var(--background-button);
+    color: var(--text-button);
+}

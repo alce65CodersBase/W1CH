@@ -1,0 +1,19 @@
+{
+  "name": "W1-Web",
+  "version": "1.0.0",
+  "description": "Challenges Week1",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Git",
+    "GitHub"
+  ],
+  "author": "Alejandro Cerezo",
+  "license": "ISC",
+  "prettier": {
+    "singleQuote": true
+  }
+}

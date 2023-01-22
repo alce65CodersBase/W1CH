@@ -24,4 +24,8 @@ Lista hover:
 Formulario:
 ![Form](form.jpg 'Form')
 
+## Resultados
 
+- 01_flex: solución utilizando Flex con el nuevo diseño. Los estilos se aplican mediante clases y selectores basados en etiquetas, creando selectores combinados cuando es necesario
+- 02_ben_n_flex: solución con el diseño antiguo, donde al uso de Flex se la añade la metodología BEM a la hora de aplicar el CSS
+- 03_flex_plus: se añaden elementos recientes de CSS a la version de flex con el nuevo diseño

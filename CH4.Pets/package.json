@@ -1,0 +1,12 @@
+{
+  "name": "ch4.pets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass sass:css -w --no-source-map"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
